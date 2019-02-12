@@ -1,0 +1,8 @@
+prefix=/home/hankey0/Documents/Learning/CarND/CarND-Capstone/ros/install
+
+Name: twist_controller
+Description: Description of twist_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/hankey0/Documents/Learning/CarND/CarND-Capstone/ros/install/lib 
+Requires: 
