@@ -23,8 +23,9 @@ as well as to verify your TL classifier.
 
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
-
-LOOKAHEAD_WPS = 200 # Number of waypoints we will publish. You can change this number
+# Change LOOKAHEAD_WPS to a lower value such as 50 for a simulator running on a VM or workspace.
+# Otherwise, keep to 200
+LOOKAHEAD_WPS = 50 # 200 # Number of waypoints we will publish. You can change this number
 MAX_DECEL = .5
 
 class WaypointUpdater(object):
