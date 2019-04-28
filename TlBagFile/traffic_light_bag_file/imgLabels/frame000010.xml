@@ -1,0 +1,26 @@
+<annotation>
+	<folder>labeledImages</folder>
+	<filename>frame000010.png</filename>
+	<path>/home/mlachmayr/CarND-Capstone/TlBagFile/traffic_light_bag_file/labeledImages/frame000010.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Red</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>421</xmin>
+			<ymin>100</ymin>
+			<xmax>434</xmax>
+			<ymax>139</ymax>
+		</bndbox>
+	</object>
+</annotation>
