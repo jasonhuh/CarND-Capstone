@@ -10,9 +10,12 @@ from light_classification.tl_classifier import TLClassifier
 from scipy.spatial import KDTree
 import tf
 import cv2
+import os
 import yaml
+import uuid
 
 STATE_COUNT_THRESHOLD = 3
+cur_dir = os.path.dirname(os.path.realpath(__file__))
 
 class TLDetector(object):
     def __init__(self):
@@ -24,6 +27,8 @@ class TLDetector(object):
         self.base_lane = None
         self.waypoints_2d = None
         self.waypoint_tree = None
+
+        self.traffic_img_count = 0
 
         sub1 = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         sub2 = rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
@@ -51,6 +56,8 @@ class TLDetector(object):
         self.last_state = TrafficLight.UNKNOWN
         self.last_wp = -1
         self.state_count = 0
+
+        os.chdir(cur_dir)
 
         rospy.spin()
 
@@ -125,7 +132,9 @@ class TLDetector(object):
         #     self.prev_light_loc = None
         #     return False
 
-        # cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        cv2.imwrite('light_classification/images/sim_light_{}.jpg'.format(self.traffic_img_count), cv_image)
+        self.traffic_img_count += 1
 
         # #Get classification
         # return self.light_classifier.get_classification(cv_image)

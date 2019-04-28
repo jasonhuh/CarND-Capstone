@@ -4,13 +4,15 @@ import sys
 import os
 import tensorflow as tf
 
+cur_dir = os.path.dirname(os.path.realpath(__file__))
+
 class TLClassifier(object):
     def __init__(self):
         pass
         #TODO load classifier
 
         # Change directory to the current directory
-        cur_dir = os.path.dirname(os.path.realpath(__file__))
+        
         os.chdir(cur_dir)
 
         MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
@@ -50,9 +52,19 @@ class TLClassifier(object):
         #TODO implement light color prediction
         return TrafficLight.UNKNOWN
 
+
 if __name__ == '__main__':
+    # def test_images():
+    #     image_paths = glob(os.path.join('images/', '*.jpg'))
+    #     for i, path in enumerate(image_paths):
+    #         print(, path)
     try:
+        
+        # Supress  'The TensorFlow library wasn't compiled to use SSE instructions, ...' warning.
+        # Reference: https://github.com/tensorflow/tensorflow/issues/7778
+        os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
         tl_classifier = TLClassifier()
+        #test_images()
     except rospy.ROSInterruptException:
         rospy.logerr('Could not start traffic classifier.')    
     
