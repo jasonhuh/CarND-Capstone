@@ -80,7 +80,9 @@ def create_tf_example(example):
 def main(_):
     
     #writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
-    writer = tf.python_io.TFRecordWriter('/home/mlachmayr/CarND-Capstone/BoschTlDataSet/output/myOutput')
+    #writer = tf.python_io.TFRecordWriter('/home/mlachmayr/CarND-Capstone/BoschTlDataSet/output/myOutput')
+    writerTrain = tf.python_io.TFRecordWriter('output/trainData')
+    writerEval  = tf.python_io.TFRecordWriter('output/evalData')
     
     # BOSCH
     INPUT_YAML = "train.yaml" #"data/test-bosch/dataset_test_rgb/test.yaml"
@@ -94,15 +96,22 @@ def main(_):
         examples[i]['path'] = os.path.abspath(os.path.join(os.path.dirname(INPUT_YAML), examples[i]['path']))
     
     counter = 0
-    for example in examples:
+    for idx, example in enumerate (examples):
         tf_example = create_tf_example(example)
-        writer.write(tf_example.SerializeToString())
+        #writer.write(tf_example.SerializeToString())
+        if (idx % 10 == 0): 
+        	writerEval.write(tf_example.SerializeToString())
+        else:
+        	writerTrain.write(tf_example.SerializeToString())
+
 
         if counter % 10 == 0:
             print("Percent done", (counter/len_examples)*100)
         counter += 1
 
-    writer.close()
+    writerTrain.close()
+    writerEval.close()
+    #writer.close()
 
 
 
