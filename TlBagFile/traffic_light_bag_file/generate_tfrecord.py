@@ -27,7 +27,18 @@ FLAGS = flags.FLAGS
 LABEL_DICT = {
     "Green": 1,
     "Red": 2,
-    "Yellow": 3
+    "GreenLeft": 3,
+    "GreenRight": 4,
+    "RedLeft": 5,
+    "RedRight": 6,
+    "Yellow": 7,
+    "off": 8,
+    "RedStraight": 9,
+    "GreenStraight": 10,
+    "GreenStraightLeft": 11,
+    "GreenStraightRight": 12,
+    "RedStraightLeft": 13,
+    "RedStraightRight": 14
 }
 
 
