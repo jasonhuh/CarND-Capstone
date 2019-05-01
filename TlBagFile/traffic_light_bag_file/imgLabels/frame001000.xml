@@ -1,7 +1,7 @@
 <annotation>
 	<folder>labeledImages</folder>
 	<filename>frame001000.png</filename>
-	<path>/home/mlachmayr/CarND-Capstone/TlBagFile/traffic_light_bag_file/labeledImages/frame001000.png</path>
+	<path>./labeledImages/frame001000.png</path>
 	<source>
 		<database>Unknown</database>
 	</source>
