@@ -79,6 +79,9 @@ def create_tf_example(example):
 
 def main(_):
     
+    height = 720 # Image height
+    width = 1280 # Image width
+    
     #writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
     #writer = tf.python_io.TFRecordWriter('/home/mlachmayr/CarND-Capstone/BoschTlDataSet/output/myOutput')
     writerTrain = tf.python_io.TFRecordWriter('output/trainData')
@@ -97,6 +100,18 @@ def main(_):
     
     counter = 0
     for idx, example in enumerate (examples):
+        #-- Test if example BBox is outside the max image size ----------------------------------------------#
+        skipNow = False
+        for box in example['boxes']:
+            if box['x_min']>=width: skipNow = True
+            if box['x_max']>=width: skipNow = True
+            if box['y_min']>=height: skipNow = True
+            if box['y_max']>=height: skipNow = True
+        if skipNow:
+            print ("MIKE... BAD IMAGE... SKIP", example)
+            continue
+        
+        #-- Convert example to TF format --------------------------------------------------------------------#
         tf_example = create_tf_example(example)
         #writer.write(tf_example.SerializeToString())
         if (idx % 10 == 0): 
