@@ -1,4 +1,4 @@
-# CarND-Capstone\CNN\README.txt
+# CarND-Capstone\CNN\README.md
 
 
 The following is the command to start training the model... You need to populate many files in this directory structure to support the training (tensorflow training)
