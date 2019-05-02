@@ -4,6 +4,9 @@ build
 devel
 
 CNN/data/*
+CNN/models/checkpoint
+CNN/models/model*
+train/*
 output/
 rgb/
 
