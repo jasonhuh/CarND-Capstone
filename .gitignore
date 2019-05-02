@@ -6,7 +6,7 @@ devel
 CNN/data/*
 CNN/models/checkpoint
 CNN/models/model*
-train/*
+CNN/models/train/*
 output/
 rgb/
 
