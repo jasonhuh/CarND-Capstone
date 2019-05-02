@@ -3,6 +3,7 @@
 build
 devel
 
-output
+output/
+rgb/
 
 profile.tmp
