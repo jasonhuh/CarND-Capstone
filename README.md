@@ -62,6 +62,12 @@ roslaunch launch/styx.launch
 ```bash
 unzip traffic_light_bag_file.zip
 ```
+
+3. (Optional) Launch rviz
+```bash
+rosrun rviz rviz
+```
+
 3. Play the bag file
 ```bash
 rosbag play -l traffic_light_bag_file/traffic_light_training.bag

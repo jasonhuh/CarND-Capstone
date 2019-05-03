@@ -15,6 +15,15 @@ import tensorflow as tf
 CLASSIFICATION_THRESHOLD = 0.5
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 
+def adjust_gamma(image, gamma=1.0):
+	# build a lookup table mapping the pixel values [0, 255] to
+	# their adjusted gamma values
+    invGamma = 1.0 / gamma
+    table = np.array([((i / 255.0) ** invGamma) * 255 for i in np.arange(0, 256)]).astype("uint8")
+
+    # apply gamma correction using the lookup table
+    return cv2.LUT(image, table)
+
 class TLClassifier(object):
     def __init__(self):
         
@@ -56,6 +65,10 @@ class TLClassifier(object):
 
         """
         #TODO implement light color prediction
+        rospy.loginfo('GET_CLASSIFICATION....')
+
+        # image = adjust_gamma(image, 0.8)
+
         # Bounding Box Detection.
         with self.graph.as_default():
             # Expand dimension since the model expects image to have shape [1, None, None, 3].
@@ -86,11 +99,16 @@ class TLClassifier(object):
         if scores is not None and scores[0] > CLASSIFICATION_THRESHOLD:  # If highest score is above 50% it's a hit
             if classes[0] == 1:
                 self.current_light = TrafficLight.GREEN
+                rospy.loginfo('-------GREEN-------')
             elif classes[0] == 2:
                 self.current_light = TrafficLight.YELLOW
+                rospy.loginfo('-------YELLOW-------')
             elif classes[0] == 3:
                 self.current_light = TrafficLight.RED
-
+                rospy.loginfo('-------RED-------')
+            else:
+                rospy.loginfo('-------UNKNOWN-------')                
+        
         return self.current_light
 
 
@@ -99,7 +117,7 @@ if __name__ == '__main__':
         print('Green', TrafficLight.GREEN)
         print('Yellow', TrafficLight.YELLOW)
         print('Red', TrafficLight.RED)
-        image_paths = glob(os.path.join('images/', '*.png'))
+        image_paths = glob(os.path.join('images/', '*.jpg'))
         for i, path in enumerate(image_paths, start=1):
             img = Image.open(path)
             img_np = np.asarray(img, dtype="uint8" )
