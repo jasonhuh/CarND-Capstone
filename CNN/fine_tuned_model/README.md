@@ -1,0 +1,1 @@
+This folder contains the model named frozen_inference_graph.pb.
