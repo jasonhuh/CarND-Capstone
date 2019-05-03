@@ -133,15 +133,14 @@ class TLDetector(object):
         #     return False
 
         # Note: Uncomment the line 136 to 139 to generate simulatir images
-        # cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
         # if self.traffic_img_count % 10 == 0:
         #     cv2.imwrite('light_classification/images/sim_light_{}.jpg'.format(self.traffic_img_count//10), cv_image)
         # self.traffic_img_count += 1
 
         # #Get classification
-        # return self.light_classifier.get_classification(cv_image)
+        return self.light_classifier.get_classification(cv_image)
 
-        return light.state
 
     def process_traffic_lights(self):
         """Finds closest visible traffic light, if one exists, and determines its
