@@ -85,18 +85,21 @@ class TLClassifier(object):
 
         if scores is not None and scores[0] > CLASSIFICATION_THRESHOLD:  # If highest score is above 50% it's a hit
             if classes[0] == 1:
-                self.current_light = TrafficLight.RED
+                self.current_light = TrafficLight.GREEN
             elif classes[0] == 2:
                 self.current_light = TrafficLight.YELLOW
             elif classes[0] == 3:
-                self.current_light = TrafficLight.GREEN
+                self.current_light = TrafficLight.RED
 
         return self.current_light
 
 
 if __name__ == '__main__':
     def test_images():
-        image_paths = glob(os.path.join('images/', '*.jpg'))
+        print('Green', TrafficLight.GREEN)
+        print('Yellow', TrafficLight.YELLOW)
+        print('Red', TrafficLight.RED)
+        image_paths = glob(os.path.join('images/', '*.png'))
         for i, path in enumerate(image_paths, start=1):
             img = Image.open(path)
             img_np = np.asarray(img, dtype="uint8" )
