@@ -1,7 +1,7 @@
 <annotation>
 	<folder>output_dir</folder>
 	<filename>frame001170.png</filename>
-	<path>/media/sf_Term3/traffic_light_bag_file/output_dir/frame001170.png</path>
+	<path>./labeledImages/frame001170.png</path>
 	<source>
 		<database>Unknown</database>
 	</source>

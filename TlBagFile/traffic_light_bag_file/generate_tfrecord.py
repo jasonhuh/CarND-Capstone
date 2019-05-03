@@ -2,7 +2,8 @@
 Usage:
   # From tensorflow/models/
   # Create train data:
-  python generate_tfrecord.py --csv_input=traffic_light_labels.csv  --output_path=output/tlbagtrainrecord/train.record
+  python generate_tfrecord.py --csv_input=train_labels.csv  --output_path=output/tlbagtrainrecord/train.record
+  python generate_tfrecord.py --csv_input=test_labels.csv  --output_path=output/tlbagtrainrecord/test.record
 """
 from __future__ import division
 from __future__ import print_function
