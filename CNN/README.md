@@ -3,6 +3,8 @@
 
 The following is the command to start training the model... You need to populate many files in this directory structure to support the training (tensorflow training)
 
+## Step 1 - Augment pre-built rfcn_resnet101_coco with Bosch images
+
 ### MODEL
 ***
 models/research/object_detection/g3doc/detection_model_zoo.md
@@ -28,7 +30,7 @@ just run the train.py script... This was copied from models/research/object_dete
   - models/research/object_detection/legacy/train.py  #copied from here
 $ python train.py --logtostderr --train_dir=./models/train --pipeline_config_path=rfcn_resnet101_coco.config
 
-### TRAIN/EVAL
+### TRAIN/EVAL - Boasch image files
 ***
 Need to try the better approach... FIXME
 $ python model_main.py --pipeline_config_path=rfcn_resnet101_coco.config --model_dir=models --num_train_steps=50000 --sample_1_of_n_eval_examples=1 --logtostderr
@@ -39,6 +41,34 @@ $ python model_main.py --logtostderr --pipeline_config_path=rfcn_resnet101_coco.
 ### Tensorboard
 ***
 ```bash
-$ cd models
+$ cd models/train
 $ tensorboard --logdir=./
+```
+
+### Save a Checkpoint Model (.ckpt) as a .pb File
+***
+```bash
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./rfcn_resnet101_coco.config --trained_checkpoint_prefix ./models/train/model.ckpt-50000 --output_directory ./fine_tuned_model
+```
+## Step 2 - Furthur Augment model from Step 1 with with TL bag file images
+
+### TRAIN/EVAL - TlBagFile files
+***
+```bash
+$ python model_main.py --pipeline_config_path=letsdoit.config --model_dir=models/letsdoit_train --num_train_steps=50000 --sample_1_of_n_eval_examples=1 --logtostderr
+```
+
+
+
+### Tensorboard - TlBagFile files
+***
+```bash
+$ cd models/letsdoit_train
+$ tensorboard --logdir=./
+```
+
+### Save a Checkpoint Model (.ckpt) as a .pb File
+***
+```bash
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./letsdoit.config --trained_checkpoint_prefix ./models/letsdoit_train/model.ckpt-50000 --output_directory ./fine_tuned_model
 ```

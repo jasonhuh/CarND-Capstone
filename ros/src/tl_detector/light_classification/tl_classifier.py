@@ -12,7 +12,7 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.models import load_model
 import tensorflow as tf
 
-CLASSIFICATION_THRESHOLD = 0.2
+CLASSIFICATION_THRESHOLD = 0.5
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 
 class TLClassifier(object):
