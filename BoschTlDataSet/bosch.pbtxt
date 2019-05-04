@@ -8,27 +8,27 @@ item {
 } 
 item {
   id: 3
-  name: 'GreenLeft'
-} 
-item {
-  id: 4
-  name: 'GreenRight'
-} 
-item {
-  id: 5
-  name: 'RedLeft'
-} 
-item {
-  id: 6
-  name: 'RedRight'
-} 
-item {
-  id: 7
   name: 'Yellow'
 } 
 item {
-  id: 8
+  id: 4
   name: 'off'
+} 
+item {
+  id: 5
+  name: 'GreenLeft'
+} 
+item {
+  id: 6
+  name: 'GreenRight'
+} 
+item {
+  id: 7
+  name: 'RedLeft'
+} 
+item {
+  id: 8
+  name: 'RedRight'
 } 
 item {
   id: 9
