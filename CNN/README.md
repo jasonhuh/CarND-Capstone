@@ -7,7 +7,10 @@ The following is the command to start training the model... You need to populate
 
 ### MODEL
 ***
-models/research/object_detection/g3doc/detection_model_zoo.md
+
+
+https://github.com/tensorflow/models/blob/dc78c0853b8a0684801c8b849b5605077de9ee9e/research/object_detection/g3doc/detection_model_zoo.md (The models in this link are compatible with Tensorflow 1.3.)
+
   - download a model  
   - I choose 
     - rfcn_resnet101_coco
@@ -19,10 +22,10 @@ rfcn_resnet101_coco.config
   - models/model.ckpt  : original trained model to start from (transfer training)
     - from tensorflow models/research/object_detection... 
     - need to download, then copy over
-  - data/letsDoIt.pbtxt : 1='Red' 2='Yellow'...
+  - data/bosch.pbtxt : 1='Green' 2='Gred' 3='Yellow' 4='Off' ...
   - data/trainData      : from BOSCH TL data (see CarND-Capstone\BoschTlDataSet\README.txt)
   - data/evalData       : (same)
-  - num_steps: 200000   : length of training  
+  - num_steps: 100000   : length of training  
 
 ### TRAIN
 
@@ -33,7 +36,7 @@ just run the train.py script... This was copied from models/research/object_dete
 $ python train.py --logtostderr --train_dir=./models/bosch_train --pipeline_config_path=rfcn_resnet101_coco.config
 ```
 
-### TRAIN/EVAL - Boasch image files 
+### TRAIN/EVAL - Boasch image files (Deprecated)
 FIXME (REMOVE) - Does not work with Tensorflow 1.3
 ***
 Need to try the better approach... FIXME
@@ -45,14 +48,14 @@ $ python model_main.py --logtostderr --pipeline_config_path=rfcn_resnet101_coco.
 ### Tensorboard
 ***
 ```bash
-$ cd models/train
+$ cd models/bosch_train
 $ tensorboard --logdir=./
 ```
 
 ### Save a Checkpoint Model (.ckpt) as a .pb File
 ***
 ```bash
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./rfcn_resnet101_coco.config --trained_checkpoint_prefix ./models/train/model.ckpt-50000 --output_directory ./fine_tuned_model
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./rfcn_resnet101_coco.config --trained_checkpoint_prefix ./models/bosch_train/model.ckpt-50000 --output_directory ./fine_tuned_model/bosch
 ```
 ## Step 2 - Furthur Augment model from Step 1 with with TL bag file images
 
@@ -86,5 +89,5 @@ $ tensorboard --logdir=./
 ### Save a Checkpoint Model (.ckpt) as a .pb File
 ***
 ```bash
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./letsdoit.config --trained_checkpoint_prefix ./models/letsdoit_train/model.ckpt-20000 --output_directory ./fine_tuned_model
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./letsdoit.config --trained_checkpoint_prefix ./models/letsdoit_train/model.ckpt-20000 --output_directory ./fine_tuned_model/letsdoit
 ```
