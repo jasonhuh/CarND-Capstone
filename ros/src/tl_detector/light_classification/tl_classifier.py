@@ -24,6 +24,11 @@ def adjust_gamma(image, gamma=1.0):
     # apply gamma correction using the lookup table
     return cv2.LUT(image, table)
 
+def load_image_into_numpy_array(image):
+  (im_width, im_height) = image.size
+  return np.array(image.getdata()).reshape(
+      (im_height, im_width, 3)).astype(np.uint8)    
+
 class TLClassifier(object):
     def __init__(self):
         
@@ -82,18 +87,6 @@ class TLClassifier(object):
         scores = np.squeeze(scores)
         classes = np.squeeze(classes).astype(np.int32)
 
-        # vis_util.visualize_boxes_and_labels_on_image_array(
-        #     image, boxes, classes, scores,
-        #     self.category_index,
-        #     use_normalized_coordinates=True,
-        #     line_thickness=4)
-
-        # if self.save_images == True and self.saved_image_counter <= self.saved_image_limit:
-        #     if not (os.path.exists("./tl_images_infer")):
-        #         os.mkdir("./tl_images_infer")
-        #     cv2.imwrite("./tl_images_infer/infer_image{0:0>4}.jpeg".format(self.saved_image_counter),cv2.cvtColor(image,cv2.COLOR_RGB2BGR))
-        #     self.saved_image_counter += 1
-
         self.current_light = TrafficLight.UNKNOWN
 
         if scores is not None and scores[0] > CLASSIFICATION_THRESHOLD:  # If highest score is above 50% it's a hit
@@ -117,10 +110,10 @@ if __name__ == '__main__':
         print('Green', TrafficLight.GREEN)
         print('Yellow', TrafficLight.YELLOW)
         print('Red', TrafficLight.RED)
-        image_paths = glob(os.path.join('images/', '*.jpg'))
+        image_paths = glob(os.path.join('images/', '*.png'))
         for i, path in enumerate(image_paths, start=1):
             img = Image.open(path)
-            img_np = np.asarray(img, dtype="uint8" )
+            img_np = load_image_into_numpy_array(img)
             # img_np = cv2.resize(img_full_np_copy[b[0]:b[2], b[1]:b[3]], (32, 32))
             result = tl_classifier.get_classification(img_np)
             print(i, path, result)
