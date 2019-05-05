@@ -147,7 +147,9 @@ class TLDetector(object):
         # self.traffic_img_count += 1
 
         # #Get classification
-        return self.light_classifier.get_classification(cv_image)
+        # Reduce light reflection
+        processed_img = cv_image[0:600, 0:800] # was [20:400, 0:800]
+        return self.light_classifier.get_classification(processed_img)
 
 
     def process_traffic_lights(self):

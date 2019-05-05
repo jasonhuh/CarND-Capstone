@@ -12,7 +12,7 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.models import load_model
 import tensorflow as tf
 
-CLASSIFICATION_THRESHOLD = 0.5
+CLASSIFICATION_THRESHOLD = 0.3
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 
 def adjust_gamma(image, gamma=1.0):
@@ -25,9 +25,10 @@ def adjust_gamma(image, gamma=1.0):
     return cv2.LUT(image, table)
 
 def load_image_into_numpy_array(image):
-  (im_width, im_height) = image.size
-  return np.array(image.getdata()).reshape(
-      (im_height, im_width, 3)).astype(np.uint8)    
+    return np.asarray(image, dtype="uint8" )
+#   (im_width, im_height) = image.size
+#   return np.array(image.getdata()).reshape(
+#       (im_height, im_width, 3)).astype(np.uint8)    
 
 class TLClassifier(object):
     def __init__(self):
@@ -70,14 +71,14 @@ class TLClassifier(object):
 
         """
         #TODO implement light color prediction
-        rospy.loginfo('GET_CLASSIFICATION....')
 
-        # image = adjust_gamma(image, 0.8)
+        # image = adjust_gamma(image, 0.3)
+        img_np = load_image_into_numpy_array(image)
 
         # Bounding Box Detection.
         with self.graph.as_default():
             # Expand dimension since the model expects image to have shape [1, None, None, 3].
-            img_expanded = np.expand_dims(image, axis=0)  
+            img_expanded = np.expand_dims(img_np, axis=0)  
             (boxes, scores, classes, num) = self.sess.run(
                 [self.d_boxes, self.d_scores, self.d_classes, self.num_d],
                 feed_dict={self.image_tensor: img_expanded})
@@ -87,8 +88,8 @@ class TLClassifier(object):
         scores = np.squeeze(scores)
         classes = np.squeeze(classes).astype(np.int32)
 
+        rospy.loginfo('GET_CLASSIFICATION....')
         self.current_light = TrafficLight.UNKNOWN
-
         if scores is not None and scores[0] > CLASSIFICATION_THRESHOLD:  # If highest score is above 50% it's a hit
             if classes[0] == 1:
                 self.current_light = TrafficLight.GREEN
@@ -113,9 +114,9 @@ if __name__ == '__main__':
         image_paths = glob(os.path.join('images/', '*.png'))
         for i, path in enumerate(image_paths, start=1):
             img = Image.open(path)
-            img_np = load_image_into_numpy_array(img)
+            # img_np = load_image_into_numpy_array(img)
             # img_np = cv2.resize(img_full_np_copy[b[0]:b[2], b[1]:b[3]], (32, 32))
-            result = tl_classifier.get_classification(img_np)
+            result = tl_classifier.get_classification(img)
             print(i, path, result)
     try:
         
