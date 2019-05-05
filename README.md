@@ -46,7 +46,7 @@ by following the class walkthrough:
 
     With the frozen **R-FCN** model `/CNN/fine_tuned_model/letsdoit` obtained from previous step the traffic lights
     were detected correctly. Based on the detected state **Red, Green, Yellow** target waypoints velocities are updated
-    either the velocity of the vehicle is decreased to stop ate **RED** or to increase the velocity gradually on detection
+    either to decelerate the vehicle stopping at **RED** or is accelerate the vehicle gradually on detection
     of **Green**. The following methods provided part of the project are used to achieve gradual deceleration
     
     ```python
