@@ -1,6 +1,66 @@
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
 
+###Team LetsDoIt
+
+####Members
+* Jason Huh hankey0@gmail.com
+* Prsant Borse paborse@outlook.com
+* Michael LachMayr mlachmayr@gmail.com
+* Guruprasad Ayyaswamy guruplace04@gmail.com
+####Team Lead
+
+Guruprasad Ayyaswamy guruplace04@gmail.com
+
+####Development
+
+The following are the major components developed part of the final capstone project
+by following the class walkthrough:
+1. **Waypoint updater(Partial)**:
+
+    In this section we subscribed to `/base_waypoints`, `/current_pose` get the list of waypoints and the current vehicle position to determine the waypoints ahead of the vehicle.
+    The computed ahead waypoints are published to `/final_waypoints`. One limitation observed using VM during this step
+    is no of `LOOKAHEAD_WPS` need to be 50 or less to accommodate the delay in communication between simulator and VM.
+    
+    Refer `ros/src/waypoint_updater/waypoint_updater.py` for details. 
+1. **Drive By Wire (DBW Node)**:
+    
+    This node of the project accomplishes the computation of throttle, break and steering command to be issued to
+    the vehicle. The controllers provided part of the Yaw Controller, PID and low pass filter is used by following
+    the walkthrough. The following subscribed messages `/current_velocity`, `/vehicle/dbw_enabled` and `/twist_command`
+    are used in this node. The `/twist_cmd` is subscribed to read linear and angular velocity by using the controllers
+    these values `throttle`, `break` and `steering` are computed. These computed values are published using `./publish`
+    of the topic commands `/vehicle/steering_cmd`, `/vehicle/throttle_cmd` and `/vehicle/break_cmd`respectively.
+    
+    Refer the following code for details:
+    ```python
+    /ros/src/twist_controller/dbw_node.py
+    /ros/src/twist_controller/pid.py
+    /ros/src/twist_controller/twist_controller.py
+    /ros/src/twist_controller/yaw_contoller.py
+ 
+    ```
+1. Traffic Light Classification and Detection
+    
+    **TO BE UDPATED**
+1. **Waypoint Updater(Complete)**
+
+    With the frozen **R-FCN** model `/CNN/fine_tuned_model/letsdoit` obtained from previous step the traffic lights
+    were detected correctly. Based on the detected state **Red, Green, Yellow** target waypoints velocities are updated
+    either the velocity of the vehicle is decreased to stop ate **RED** or to increase the velocity gradually on detection
+    of **Green**. The following methods provided part of the project are used to achieve gradual deceleration
+    
+    ```python
+    get_waypoint_velocity(self, waypoint):
+    set_waypoint_velocity(self, waypoints, waypoint, velocity):
+    distance(self, waypoints, wp1, wp2):
+
+    ```
+
+    Refer `ros/src/waypoint_updater/waypoint_updater.py` for details.
+
+
 Please use **one** of the two installation options, either native **or** docker installation.
+
 
 ### Native Installation
 
