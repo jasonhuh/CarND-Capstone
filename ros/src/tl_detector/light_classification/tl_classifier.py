@@ -94,11 +94,11 @@ class TLClassifier(object):
                 self.current_light = TrafficLight.GREEN
                 rospy.loginfo('-------GREEN-------')
             elif classes[0] == 2:
-                self.current_light = TrafficLight.YELLOW
-                rospy.loginfo('-------YELLOW-------')
-            elif classes[0] == 3:
                 self.current_light = TrafficLight.RED
                 rospy.loginfo('-------RED-------')
+            elif classes[0] == 3:
+                self.current_light = TrafficLight.YELLOW
+                rospy.loginfo('-------YELLOW-------')
             else:
                 rospy.loginfo('-------UNKNOWN-------')                
         

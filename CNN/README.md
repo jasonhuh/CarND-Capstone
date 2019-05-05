@@ -63,7 +63,8 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ### TRAIN
 
 ***
-just run the train.py script... This was copied from models/research/
+Train the TL Bag images using the Bosch model created from Step 1.
+
 ```  
 $ python train.py --logtostderr --train_dir=./models/letsdoit_train --pipeline_config_path=letsdoit.config
 ```
