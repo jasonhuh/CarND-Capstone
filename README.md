@@ -39,14 +39,14 @@ by following the class walkthrough:
     /ros/src/twist_controller/yaw_contoller.py
  
     ```
-1. Traffic Light Classification and Detection
+1. **Traffic Light Classification and Detection**
     
     **TO BE UDPATED**
 1. **Waypoint Updater(Complete)**
 
     With the frozen **R-FCN** model `/CNN/fine_tuned_model/letsdoit` obtained from previous step the traffic lights
     were detected correctly. Based on the detected state **Red, Green, Yellow** target waypoints velocities are updated
-    either to decelerate the vehicle stopping at **RED** or is accelerate the vehicle gradually on detection
+    either to decelerate the vehicle stopping at **RED** or is to accelerate the vehicle gradually on detection
     of **Green**. The following methods provided part of the project are used to achieve gradual deceleration
     
     ```python
