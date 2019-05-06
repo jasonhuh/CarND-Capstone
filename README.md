@@ -1,5 +1,10 @@
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
 
+[//]: # (Image References)
+
+[image1]: ./imgs/bosch_detected_image1.png "Bosch TL Detection"
+[image2]: ./imgs/tlbag_detected_image.png "Drive test TL Detection"
+
 ### Team LetsDoIt
 
 #### Members
@@ -43,7 +48,8 @@ by following the class walkthrough:
     The major part of our effort for this project is on detecting the traffic lights using tensforflow. The approach taken is
     similar to the step by step approach discussed in [Object Detection Part 1 ](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-1-selecting-a-model-a02b6aabe39e).
     
-    ###### Data Collection and Pre-processing
+    **Data Collection and Pre-processing**
+    
     We decided to use [Bosch Traffic Data](https://hci.iwr.uni-heidelberg.de/node/6132) as it had comprehensive traffic 
     light dataset of size ~ *6G* images to train the model. Also the traffic light images had the necessary classification
     of 14 different labels including **Red, Yellow and Green** which are required for this project defined in YAML format.
@@ -61,7 +67,8 @@ by following the class walkthrough:
        ./TlBagFile/traffic_light_bag_file/*.*
     ```
      
-    ###### Model Training
+    **Model Training**
+    
     We decided to use **Faster R-CNN** model to train and detect for both bosch and drive test traffic light images using
     tensorflow object detection API. Model is initially trained for Bosch data with following parameters:
         
@@ -69,21 +76,21 @@ by following the class walkthrough:
          
          * epochs: 50,000
          * learning rate: 0.0001
-     
-     Here are some of the detected image samples for bosch traffic light data set
-     ![Bosch detection]:(./imgs/bosch_detected_image1.png)
+
+    Here are some of the detected image samples for bosch traffic light data set
+   ![image1]
     
     The same model is used to train drive test traffic images [Udacity drive test](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip)
     with the following parameters
     
-     ** HyperParameters:**
+     **HyperParameters:**
          
          * epochs: 20,000
          * learning rate: 0.0001
      Here are some of the detected image samples for drive test traffic light data set
-      ![TL image detection]:(./imgs/tlbag_detected_image.png)
+    ![image2]
      
-    ###### Training Results
+    **Training Results**
     
     
 1. **Waypoint Updater(Complete)**
