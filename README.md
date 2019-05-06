@@ -4,6 +4,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 
 [image1]: ./imgs/bosch_detected_image1.png "Bosch TL Detection"
 [image2]: ./imgs/tlbag_detected_image.png "Drive test TL Detection"
+[image3]: ./imgs/training_loss_results.png "Training Loss Results"
 
 ### Team LetsDoIt
 
@@ -91,6 +92,7 @@ by following the class walkthrough:
     ![image2]
      
     **Training Results**
+    ![image3]
     
     
 1. **Waypoint Updater(Complete)**
