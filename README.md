@@ -10,7 +10,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 
 #### Members
 * Jason Huh hankey0@gmail.com
-* Prsant Borse paborse@outlook.com
+* Prashant Borse paborse@outlook.com
 * Michael LachMayr mlachmayr@gmail.com
 * Guruprasad Ayyaswamy guruplace04@gmail.com
 #### Team Lead
@@ -91,7 +91,8 @@ by following the class walkthrough:
      Here are some of the detected image samples for drive test traffic light data set
     ![image2]
      
-    **Training Results**
+    **Training Results:**
+    
     ![image3]
     
     
