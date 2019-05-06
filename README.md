@@ -9,8 +9,8 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 ### Team LetsDoIt
 
 #### Members
-* Jason Huh hankey0@gmail.com
-* Prashant Borse paborse@outlook.com
+* Jason Huh jasonhuh@hotmail.com
+* Prashant Aravind Borse paborse@outlook.com
 * Michael LachMayr mlachmayr@gmail.com
 * Guruprasad Ayyaswamy guruplace04@gmail.com
 #### Team Lead
