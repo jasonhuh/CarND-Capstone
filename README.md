@@ -40,14 +40,53 @@ by following the class walkthrough:
  
     ```
 1. **Traffic Light Classification and Detection**
-    The major part of our effort for this project is on detecting the traffic lights using tensforflow. The approach is
-    similar to the step by step approach discussed in [Object Detection Reference ](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-1-selecting-a-model-a02b6aabe39e).
+    The major part of our effort for this project is on detecting the traffic lights using tensforflow. The approach taken is
+    similar to the step by step approach discussed in [Object Detection Part 1 ](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-1-selecting-a-model-a02b6aabe39e).
     
-    1. Data Collection and Pre-processing
-    1. Model Training
-    1. Results
+    ###### Data Collection and Pre-processing
+    We decided to use [Bosch Traffic Data](https://hci.iwr.uni-heidelberg.de/node/6132) as it had comprehensive traffic 
+    light dataset of size ~ *6G* images to train the model. Also the traffic light images had the necessary classification
+    of 14 different labels including **Red, Yellow and Green ** which are required for this project defined in YAML format.
+    Refer `./BoschTlDataSet/train.yaml` for details about the metadata. This dataset is then converted to **tfrecord**
+    file in order to feed into tensorflow for training the model as discussed here in [Object Detection Part 2](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-2-converting-dataset-to-tfrecord-47f24be9248d)
     
-    **TO BE UDPATED**
+    The second dataset that was used to train the model is from the [Udacity drive test](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip)
+    and the images are annotated using **LabelImg** as **Red, Yellow and Green** by following the steps mentioned in
+    [Object detection Part 3](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-3-creating-your-own-dataset-6369a4d30dfd).
+    The annotated images are then converted to **trecordfile** further in order to feed into tensorflow for training.
+    
+    Refer the following files for details
+    ```python
+       ./BoschTlDataSet/*.*
+       ./TlBagFile/traffic_light_bag_file/*.*
+    ```
+     
+    ###### Model Training
+    We decided to use **Faster R-CNN** model to train and detect for both bosch and drive test traffic light images using
+    tensorflow object detection API. Model is initially trained for Bosch data with following parameters:
+        
+     1. HyperParameters:
+         * epochs: 50,000
+         * learning rate: 0.0001
+     
+     Here are some of the detected image samples for bosch traffic light data set
+     [image1]: ./imgs/bosch_detected_image1.png "Bosch detection"
+     
+     ![image1]     
+    
+    The same model is used to train drive test traffic images [Udacity drive test](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip)
+    with the following parameters
+    
+     1. HyperParameters:
+         * epochs: 20,000
+         * learning rate: 0.0001
+     Here are some of the detected image samples for drive test traffic light data set
+      [image2]: ./imgs/tlbag_detected_image.png "Bosch detection"
+     
+     ![image2]     
+     
+    ###### Training Results
+    
     
 1. **Waypoint Updater(Complete)**
 
