@@ -40,14 +40,21 @@ by following the class walkthrough:
  
     ```
 1. **Traffic Light Classification and Detection**
+    The major part of our effort for this project is on detecting the traffic lights using tensforflow. The approach is
+    similar to the step by step approach discussed in [Object Detection Reference ](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-1-selecting-a-model-a02b6aabe39e).
+    
+    1. Data Collection and Pre-processing
+    1. Model Training
+    1. Results
     
     **TO BE UDPATED**
+    
 1. **Waypoint Updater(Complete)**
 
     With the frozen **R-FCN** model `/CNN/fine_tuned_model/letsdoit` obtained from previous step the traffic lights
     were detected correctly. Based on the detected state **Red, Green, Yellow** target waypoints velocities are updated
     either to decelerate the vehicle stopping at **RED** or is to accelerate the vehicle gradually on detection
-    of **Green**. The following methods provided part of the project are used to achieve gradual deceleration
+    of **GREEN**. The following methods provided part of the project are used to achieve gradual deceleration
     
     ```python
     get_waypoint_velocity(self, waypoint):
