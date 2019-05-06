@@ -152,7 +152,7 @@ To set up port forwarding, please refer to the [instructions from term 2](https:
 ### Usage
 
 1. Install `git-lfs`. The project repository contains a large file. Install `git-lfs` 
-prior to cloining the project repository.
+prior to cloning the project repository.
 ```bash
 # Download deb file 
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -162,7 +162,7 @@ $ sudo apt-get install git-lfs
 
 2. Clone the project repository
 ```bash
-git clone https://github.com/udacity/CarND-Capstone.git
+git clone https://github.com/jasonhuh/CarND-Capstone
 ```
 
 3. Install python dependencies
