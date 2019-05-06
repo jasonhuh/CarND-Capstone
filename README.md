@@ -65,23 +65,23 @@ by following the class walkthrough:
     We decided to use **Faster R-CNN** model to train and detect for both bosch and drive test traffic light images using
     tensorflow object detection API. Model is initially trained for Bosch data with following parameters:
         
-     1. HyperParameters:
+     **HyperParameters:**
          * epochs: 50,000
          * learning rate: 0.0001
      
      Here are some of the detected image samples for bosch traffic light data set
-     [image1]:./imgs/bosch_detected_image1.png "Bosch detection"
+     [image1]: ./imgs/bosch_detected_image1.png "Bosch detection"
      
      ![image1]     
     
     The same model is used to train drive test traffic images [Udacity drive test](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip)
     with the following parameters
     
-     1. HyperParameters:
+     ** HyperParameters:**
          * epochs: 20,000
          * learning rate: 0.0001
      Here are some of the detected image samples for drive test traffic light data set
-      [image2]:./imgs/tlbag_detected_image.png "Bosch detection"
+      [image2]: ./imgs/tlbag_detected_image.png "Drive tl image detection"
      
      ![image2]     
      
