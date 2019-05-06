@@ -66,24 +66,22 @@ by following the class walkthrough:
     tensorflow object detection API. Model is initially trained for Bosch data with following parameters:
         
      **HyperParameters:**
+         
          * epochs: 50,000
          * learning rate: 0.0001
      
      Here are some of the detected image samples for bosch traffic light data set
-     [image1]: ./imgs/bosch_detected_image1.png "Bosch detection"
-     
-     ![image1]     
+     ![Bosch detection]:(./imgs/bosch_detected_image1.png)
     
     The same model is used to train drive test traffic images [Udacity drive test](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip)
     with the following parameters
     
      ** HyperParameters:**
+         
          * epochs: 20,000
          * learning rate: 0.0001
      Here are some of the detected image samples for drive test traffic light data set
-      [image2]: ./imgs/tlbag_detected_image.png "Drive tl image detection"
-     
-     ![image2]     
+      ![TL image detection]:(./imgs/tlbag_detected_image.png)
      
     ###### Training Results
     
