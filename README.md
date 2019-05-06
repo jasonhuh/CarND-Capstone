@@ -46,7 +46,7 @@ by following the class walkthrough:
     ###### Data Collection and Pre-processing
     We decided to use [Bosch Traffic Data](https://hci.iwr.uni-heidelberg.de/node/6132) as it had comprehensive traffic 
     light dataset of size ~ *6G* images to train the model. Also the traffic light images had the necessary classification
-    of 14 different labels including **Red, Yellow and Green ** which are required for this project defined in YAML format.
+    of 14 different labels including **Red, Yellow and Green** which are required for this project defined in YAML format.
     Refer `./BoschTlDataSet/train.yaml` for details about the metadata. This dataset is then converted to **tfrecord**
     file in order to feed into tensorflow for training the model as discussed here in [Object Detection Part 2](https://medium.com/@WuStangDan/step-by-step-tensorflow-object-detection-api-tutorial-part-2-converting-dataset-to-tfrecord-47f24be9248d)
     
@@ -70,7 +70,7 @@ by following the class walkthrough:
          * learning rate: 0.0001
      
      Here are some of the detected image samples for bosch traffic light data set
-     [image1]: ./imgs/bosch_detected_image1.png "Bosch detection"
+     [image1]:./imgs/bosch_detected_image1.png "Bosch detection"
      
      ![image1]     
     
@@ -81,7 +81,7 @@ by following the class walkthrough:
          * epochs: 20,000
          * learning rate: 0.0001
      Here are some of the detected image samples for drive test traffic light data set
-      [image2]: ./imgs/tlbag_detected_image.png "Bosch detection"
+      [image2]:./imgs/tlbag_detected_image.png "Bosch detection"
      
      ![image2]     
      
