@@ -36,8 +36,8 @@ just run the train.py script... This was copied from models/research/object_dete
 $ python train.py --logtostderr --train_dir=./models/bosch_train --pipeline_config_path=rfcn_resnet101_coco.config
 ```
 
-### TRAIN/EVAL - Boasch image files (Deprecated)
-FIXME (REMOVE) - Does not work with Tensorflow 1.3
+### TRAIN/EVAL - Boasch image files (Works only with Tensorflow 1.12 and above)
+Note: The `train.py` has been moved to `lelgacy` folder in the Tensorflow Models, and the `model_main.py` is a modern way of performing training and evaluating. Unfortunately, this does not work with Tensorflow 1.3. For this project, the team used the `train.py` instead.
 ***
 Need to try the better approach... FIXME
 $ python model_main.py --pipeline_config_path=rfcn_resnet101_coco.config --model_dir=models --num_train_steps=50000 --sample_1_of_n_eval_examples=1 --logtostderr
@@ -72,10 +72,10 @@ $ python train.py --logtostderr --train_dir=./models/letsdoit_train --pipeline_c
 
 
 ### TRAIN/EVAL - TlBagFile files
-FIXME - REMOVE - Does not work with Tensorflow 1.3
+Note: The `train.py` has been moved to `lelgacy` folder in the Tensorflow Models, and the `model_main.py` is a modern way of performing training and evaluating. Unfortunately, this does not work with Tensorflow 1.3. For this project, the team used the `train.py` instead.
 ***
 ```bash
-$ python model_main.py --pipeline_config_path=letsdoit.config --model_dir=models/letsdoit_train --num_train_steps=50000 --sample_1_of_n_eval_examples=1 --logtostderr
+$ python model_main.py --pipeline_config_path=letsdoit.config --model_dir=models/letsdoit_train --num_train_steps=20000 --sample_1_of_n_eval_examples=1 --logtostderr
 ```
 
 

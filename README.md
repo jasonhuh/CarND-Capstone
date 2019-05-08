@@ -76,7 +76,7 @@ by following the class walkthrough:
      **HyperParameters:**
          
          * epochs: 50,000
-         * learning rate: 0.0001
+         * learning rate: 0.0003
 
     Here are some of the detected image samples for bosch traffic light data set
    ![image1]
@@ -87,7 +87,7 @@ by following the class walkthrough:
      **HyperParameters:**
          
          * epochs: 20,000
-         * learning rate: 0.0001
+         * learning rate: 0.00003
      Here are some of the detected image samples for drive test traffic light data set
     ![image2]
      
